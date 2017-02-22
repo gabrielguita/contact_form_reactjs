@@ -1,0 +1,35 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      }
+    }],
+    "react",
+    "es2015",
+    "stage-0"
+  ],
+  "plugins": [],
+  "env": {
+    "test" : {
+      "plugins":[
+        ["module-resolver", {
+          "root": ["./app"]
+        }],
+        ["transform-runtime"]]
+    },
+    "development": {
+      "plugins": ["transform-runtime"],
+      "presets": [
+        "react-hmre"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-runtime",
+        "transform-react-constant-elements",
+        "transform-react-remove-prop-types"
+      ]
+    }
+  }
+}
