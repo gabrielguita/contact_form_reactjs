@@ -1,0 +1,15 @@
+.btn{
+  background: transparent;
+  border: solid 1px #222;
+  color: #222;
+}
+
+.btn:hover{
+  opacity: .8;
+}
+
+.red {
+  font-size: 25px;
+  background-color: red;
+  color: white;
+}
