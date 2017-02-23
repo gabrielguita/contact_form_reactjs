@@ -1,33 +1,13 @@
 import React, { PropTypes } from 'react';
 import ReactDom from 'react-dom';
+import {inputField, submitButton, row, contactForm, contactFormWrapper} from './style.scss';
 
-const submitButton = {
-  color: '#000',
-  backgroundColor: 'white',
-  padding: '8px',
-  border: 'solid 1px #222'
-}
+//converting component
 
-const inputField = {
-  padding: '5px 8px',
-  border: 'solid 1px #717171',
-  borderRadius: '2px'
-}
+//after this routing
 
-const row = {
-  fontSize: '14px',
-  paddingBottom: '10px',
-  display: 'inline-block',
-  textAlign: 'left'
-}
+//sync info
 
-const contactForm = {
-    textAlign: 'center',
-}
-
-const contactFormWrapper = {
-  marginTop: '20px'
-}
 
 // New file Container
 const Form = React.createClass({
@@ -96,16 +76,16 @@ const Form = React.createClass({
 const FormChild = ({handleClick, contact, handleSubmit, handleRadioChange}) => {
 console.log(contact);
  return (
-    <div className="contactForm" style={contactForm}>
+    <div className={contactForm}>
          {`Hi, I'm a component, / my name is: ${contact["name"]} / my last name is:  ${contact["lastName"]} / this is my message: ${contact["message"]}`}
-      <div className="contactFormWrapper" style={contactFormWrapper}>
-        <label className="row" style={row}>
-            Your first name:  <input className="inputField" style={inputField} onChange={handleClick} name='name' value={contact['name']} type='text' placeholder="your name" />
+      <div className={contactFormWrapper}>
+        <label className={row}>
+            Your first name:  <input className={inputField} onChange={handleClick} name='name' value={contact['name']} type='text' placeholder="your name" />
         </label>
          <br />
-        <label className="row" style={row}>
+        <label className={row}>
           Your last name:
-          <input className="inputField" style={inputField} onChange={handleClick} name='lastName' value={contact['lastName']} type='text' placeholder="your last name" />
+          <input className={inputField} onChange={handleClick} name='lastName' value={contact['lastName']} type='text' placeholder="your last name" />
         </label>
       <br />
   <label htmlFor="work">
@@ -127,9 +107,9 @@ console.log(contact);
   />
   Private</label>
          <br/>
-        <label className="row" style={row}>
+        <label className={row}>
           Your sex:
-          <select className="inputField" style={inputField} onChange={handleClick} name='sex' value={contact['sex']}>
+          <select className={inputField} onChange={handleClick} name='sex' value={contact['sex']}>
             <option value="">Select an option</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -137,11 +117,11 @@ console.log(contact);
           </select>
         </label>
          <br />
-        <label className="row" style={row}> Your message:
-          <textarea className="inputField" style={inputField} onChange={handleClick} name='message' value={contact['message']}  placeholder="your message"  /><br />
+        <label className={row}> Your message:
+          <textarea className={inputField} onChange={handleClick} name='message' value={contact['message']}  placeholder="your message"  /><br />
         </label>
          <br />
-        <input className="button" style={submitButton} onClick={handleSubmit} type='submit' value='submit' /><br />
+        <input className={submitButton} onClick={handleSubmit} type='submit' value='submit' /><br />
       </div>
     </div>
  )

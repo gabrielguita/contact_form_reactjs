@@ -1,4 +1,4 @@
-const submitButton = {
+export const submitButton = {
   color: '#000',
   backgroundColor: 'white',
   padding: '8px',
