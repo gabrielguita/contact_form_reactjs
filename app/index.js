@@ -49,19 +49,13 @@ const Form = React.createClass({
    lastName: PropTypes.string.isRequired,
  },
 
-selectedRadioState () {
-  return{
-    optionRadio: {
-      selectedRadio: 'work'
-    }
-  }
-},
  getInitialState () {
    return {
      contact: {
        name: '',
        lastName: '',
        message: '',
+       work: '',
        sex: {
          male: 'male',
          female: 'female'
@@ -81,13 +75,10 @@ selectedRadioState () {
    // this.setState({'name': 'Gabriel', 'lastName': 'from Ireland'})
  },
  handleRadioChange (e) {
-   this.setState({e}, function () {
-    console.log(this)
-   })
-  // this.setState({
-  //   selectedRadioState: e.currentTarget.value
-  // })
-   console.log(e)
+     console.log(e.target.value)
+     let contact = this.state.contact;
+     contact['work'] = e.target.value
+     this.setState({contact})
 },
 
  handleSubmit (e) {
@@ -96,13 +87,14 @@ selectedRadioState () {
  },
  render () {
    return (
-       <FormChild handleClick={this.handleClick} contact={this.state.contact} handleSubmit={this.handleSubmit} />
+       <FormChild handleClick={this.handleClick} contact={this.state.contact} handleSubmit={this.handleSubmit} handleRadioChange={this.handleRadioChange}/>
    )
  }
 })
 
 // Component Presentation
-const FormChild = ({handleClick, contact, handleSubmit, selectedRadioState, handleRadioChange, optionRadio}) => {
+const FormChild = ({handleClick, contact, handleSubmit, handleRadioChange}) => {
+console.log(contact);
  return (
     <div className="contactForm" style={contactForm}>
          {`Hi, I'm a component, / my name is: ${contact["name"]} / my last name is:  ${contact["lastName"]} / this is my message: ${contact["message"]}`}
@@ -117,21 +109,21 @@ const FormChild = ({handleClick, contact, handleSubmit, selectedRadioState, hand
         </label>
       <br />
   <label htmlFor="work">
-     <input
+    <input
     type="radio"
     name="work"
-    value="work"
-    checked={contact['sex'] === 'male'}
-    onChange={handleClick}
+    value="male"
+    checked={contact['work'] === 'male'}
+    onChange={handleRadioChange}
   />
  Public</label>
 
  <label htmlFor="personal"> <input
     type="radio"
-    name="personal"
-    value="personal"
-    checked={contact['sex'] === 'female'}
-    onChange={handleClick}
+    name="work"
+    value="female"
+    checked={contact['work'] === 'female'}
+    onChange={handleRadioChange}
   />
   Private</label>
          <br/>
