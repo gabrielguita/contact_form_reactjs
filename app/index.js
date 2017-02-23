@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactDom from 'react-dom';
 
-
 const submitButton = {
   color: '#000',
   backgroundColor: 'white',
@@ -24,13 +23,11 @@ const row = {
 
 const contactForm = {
     textAlign: 'center',
-
 }
 
 const contactFormWrapper = {
   marginTop: '20px'
 }
-
 
 // New file Container
 const Form = React.createClass({
@@ -51,12 +48,24 @@ const Form = React.createClass({
    name: PropTypes.string.isRequired,
    lastName: PropTypes.string.isRequired,
  },
+
+selectedRadioState () {
+  return{
+    optionRadio: {
+      selectedRadio: 'work'
+    }
+  }
+},
  getInitialState () {
    return {
      contact: {
        name: '',
        lastName: '',
-       message: ''
+       message: '',
+       sex: {
+         male: 'male',
+         female: 'female'
+       }
      },
    }
  },
@@ -66,15 +75,24 @@ const Form = React.createClass({
    let contact = this.state.contact
    contact[field] = e.target.value
    this.setState({contact}, function () {
-    // console.log(this.state)
+    console.log(this)
    })
-   // console.log('clicked!!!')
+     console.log('clicked!!!')
    // this.setState({'name': 'Gabriel', 'lastName': 'from Ireland'})
  },
+ handleRadioChange (e) {
+   this.setState({e}, function () {
+    console.log(this)
+   })
+  // this.setState({
+  //   selectedRadioState: e.currentTarget.value
+  // })
+   console.log(e)
+},
+
  handleSubmit (e) {
   console.log(this.state.contact)
- e.preventDefault();
-
+  e.preventDefault();
  },
  render () {
    return (
@@ -84,7 +102,7 @@ const Form = React.createClass({
 })
 
 // Component Presentation
-const FormChild = ({handleClick, contact, handleSubmit}) => {
+const FormChild = ({handleClick, contact, handleSubmit, selectedRadioState, handleRadioChange, optionRadio}) => {
  return (
     <div className="contactForm" style={contactForm}>
          {`Hi, I'm a component, / my name is: ${contact["name"]} / my last name is:  ${contact["lastName"]} / this is my message: ${contact["message"]}`}
@@ -97,7 +115,26 @@ const FormChild = ({handleClick, contact, handleSubmit}) => {
           Your last name:
           <input className="inputField" style={inputField} onChange={handleClick} name='lastName' value={contact['lastName']} type='text' placeholder="your last name" />
         </label>
-         <br />
+      <br />
+  <label htmlFor="work">
+     <input
+    type="radio"
+    name="work"
+    value="work"
+    checked={contact['sex'] === 'male'}
+    onChange={handleClick}
+  />
+ Public</label>
+
+ <label htmlFor="personal"> <input
+    type="radio"
+    name="personal"
+    value="personal"
+    checked={contact['sex'] === 'female'}
+    onChange={handleClick}
+  />
+  Private</label>
+         <br/>
         <label className="row" style={row}>
           Your sex:
           <select className="inputField" style={inputField} onChange={handleClick} name='sex' value={contact['sex']}>
