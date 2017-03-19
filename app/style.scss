@@ -1,28 +1,196 @@
-.submitButton {
-  color: #fff;
-  background-color: #222;
-  padding: 8px;
-  border: solid 1px white;
-  border-radius: 5px;
+body{
+  padding: 0;
+  margin: 0;
+}
+h3,
+p,
+ul{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato';
+  letter-spacing: .5px;
+}
+h3{
+  font-size: 16px;
+}
+p{
+  font-size: 13px;
+  font-family: 'Lato';
 }
 
-.inputField {
-  padding: 5px 8px;
-  border: solid 1px #717171;
-  border-radius: 2px;
+.shopingListContainer{
+  background: white;
+  color: #000;
+
+  ul.productList{
+    padding: 10px;
+    li{
+      padding: 20px 0;
+      border-bottom: solid 1px #ccc;
+      display: inline-block;
+      width: 100%;
+      height: 60px;
+      line-height: 30px;
+      &:first-child{
+        .checkbox{
+            content: '\2713';
+            color: #fff;
+            background: orange;
+            font-size: 21px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            text-align: center;
+        }
+      }
+      h3{
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: 15px;
+        font-family: 'Lato'
+      }
+      p{
+        font-size: 14px;
+        color: #949494;
+        max-height: 39px;
+        overflow: hidden;
+      }
+    }
+  }
 }
 
-.row {
-  font-size: 14px;
-  padding-bottom: 10px;
-  display: inline-block;
+.header{
+  text-align: center;
+  border-bottom: solid 1px #ccc;
+  padding: 10px 0;
+  h3{
+    font-size: 16px;
+  }
+  p{
+    font-size: 13px;
+    color: #949494;
+
+  }
 }
 
-.contactForm {
+.printBtn{
+  height: 45px;
+  width: 45px;
+  background: #8a8a8a;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  &:after{
+    content: '';
+    background-image: url('http://www.iconsdb.com/icons/preview/persian-red/printer-xxl.png');
+    position: absolute;
+    top: 7px;
+    left: 0;
+    right: 0;
     text-align: center;
-
+    width: 30px;
+    height: 30px;
+    z-index: 111111;
+    margin: 0 auto;
+  }
+}
+.btnBack{
+  float: left;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  width: 10px;
+  height: 10px;
+  transform: rotate(135deg);
+  margin-top: 15px;
+  margin-left: 4px;
+  position: absolute;
+  cursor: pointer;
+  left: 25px;
 }
 
-.contactFormWrapper {
-  margin-top: 20px;
+.btnDetails{
+  float: left;
+  border-right: 2px solid #8e8e8e;
+  border-bottom: 2px solid #8e8e8e;
+  width: 10px;
+  height: 10px;
+  transform: rotate(-45deg);
+  margin-top: 15px;
+  margin-left: 4px;
+  position: absolute;
+  cursor: pointer;
+  right: 5px;
+}
+.orderDetails{
+  padding: 10px;
+  ul{
+    li{
+        color: #949494;
+        margin-bottom: 5px;
+        font-weight: 100;
+        strong{
+          color: #000;
+        }
+    }
+  }
+}
+
+.orderStatus{
+  background: #ececec;
+  padding: 10px;
+    table{
+      width: 100%;
+      font-family: 'Lato';
+      letter-spacing: .5px;
+      tr:first-child{
+        font-weight: bold;
+        font-size: 14px;
+      }
+      tr{
+        font-size: 13px;
+        font-weight: normal;
+        text-transform: lowercase;
+      }
+    }
+}
+
+.checkbox{
+  float: left;
+  width: 30px;
+  height: 30px;
+  border: solid 2px orange;
+  position: relative;
+  margin: 10px 0;
+}
+.content{
+  width: 85%;
+  float: left;
+  padding-left: 10px;
+}
+.photo{
+  float: left;
+  width: auto;
+}
+.description{
+  float: right;
+  width: 85%;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 625px) {
+  .description{
+    width: 100%;
+    max-width: 195px;
+    padding-left: 0px;
+  }
+  .shopingListContainer {
+     ul.productList{
+       li{
+         h3{
+           font-size: 12px;
+         }
+       }
+     }
+  }
 }
